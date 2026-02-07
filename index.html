@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promise Day 💍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:'Pacifico', cursive;
+  background: linear-gradient(135deg,#f7c5cc,#fde2e4);
+  overflow-x:hidden;
+}
+
+/* COMMON */
+.page{
+  min-height:100vh;
+  padding:25px;
+  display:none;
+  text-align:center;
+}
+.page.active{ display:block; }
+
+h1{
+  font-size:36px;
+  color:#7a2e2e;
+}
+p{
+  font-size:20px;
+  color:#6b3a3a;
+}
+
+/* BUTTON */
+.btn{
+  margin-top:20px;
+  padding:12px 25px;
+  border:none;
+  border-radius:25px;
+  background:#ff6b81;
+  color:white;
+  font-size:16px;
+}
+
+/* PAGE 1 */
+.pinky{
+  width:180px;
+}
+
+/* PAGE 2 */
+.promise-box{
+  background:rgba(255,255,255,0.7);
+  padding:15px;
+  border-radius:20px;
+  margin-top:20px;
+}
+
+/* PAGE 3 */
+.run-btn{
+  position:relative;
+}
+
+/* PAGE 4 */
+.final-gif{
+  width:220px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="p1">
+  <h1>Promise Day 💍</h1>
+  <p>Aaj Promise Day hai…<br> aur ye sirf words nahi hai 💗 <br> meri feelings hai ♥️</p>
+
+  <img class="pinky" src="https://tenor.com/en-GB/view/te-lo-prometo-promise-heart-love-i-promise-you-gif-16040149.gif">
+
+  <br>
+  <button class="btn" onclick="nextPage(2)">Aage ➝</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="p2">
+  <h1>Mere Promises 🤞</h1>
+
+  <div class="promise-box">
+    <p id="promiseText">Tap for my promises 💕</p>
+  </div>
+
+  <button class="btn" onclick="showPromise()">Next Promise</button>
+  <br><br>
+  <button class="btn" onclick="nextPage(3)">Aage ➝</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="p3">
+  <h1>Ek Question 🥺</h1>
+  <p>Kya main ye promise tod doon?</p>
+
+  <button class="btn run-btn" id="runBtn">Promise Tod Do</button>
+
+  <br><br>
+  <button class="btn" onclick="nextPage(4)">Aage ➝</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="p4">
+  <h1>Final Promise 💖</h1>
+
+  <img class="final-gif" src="https://media.giphy.com/media/1gbQIeNzZxcSk/giphy.gif">
+
+  <p>
+    Chahe life easy ho ya messy,<br>
+    tera haath main chhodunga nahi.
+  </p>
+
+  <p>— hamesha 💗</p>
+</div>
+
+<script>
+let currentPromise = 0;
+
+const promises = [
+"Jab tu thak jaaye, main sununga 💗",
+"Perfect nahi hoon, par tera hamesha hoon 🥺",
+"Tera mood off ho to chocolate meri taraf se 🍫",
+"Tere saath grow karne ka promise 🤍",
+"Roz thoda aur pyaar karne ka promise 💕",
+"Hamesha baat manne ka promise 🤞🏻",
+"Har situation mein saath dene ka promise 🤝",
+"Jitna chahe utna pyaar karne ka promise 💖",
+"Saare promises ko pura karne ka promise 💯"
+];
+
+function nextPage(num){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('p'+num).classList.add('active');
+}
+
+function showPromise(){
+  if(currentPromise < promises.length){
+    document.getElementById("promiseText").innerText = promises[currentPromise];
+    currentPromise++;
+  }else{
+    document.getElementById("promiseText").innerText = "Bas itne hi nahi… aur bhi hai 💖";
+  }
+}
+
+/* RUNNING BUTTON */
+const runBtn = document.getElementById("runBtn");
+runBtn.addEventListener("mouseover", ()=>{
+  const x = Math.random()*200 - 100;
+  const y = Math.random()*200 - 100;
+  runBtn.style.transform = `translate(${x}px,${y}px)`;
+});
+</script>
+
+</body>
+</html>
